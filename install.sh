@@ -46,18 +46,21 @@ env LANG=C /usr/bin/indexmaker --output=/var/mrtg/index.html \
 /etc/mrtg/temp.cfg \
 
 # add to cron
-# using this technique
-# https://stackoverflow.com/questions/878600/how-to-create-a-cron-job-using-bash-automatically-without-the-interactive-editor
-# write out current crontab
+# using this technique: https://stackoverflow.com/questions/878600/
+
 crontab -l > mycron.tmp
+
+if grep -q mrtg mycron.tmp; then
+  echo 'There is already a mrtg action in the crontab';
+  exit 1
+fi
+
 # every 5 minutes, check cpu, memory and traffic
-# every half an hour, check disk
-# every hour, check temperature
-
 echo "*/5 * * * * env LANG=C mrtg /etc/mrtg/cpu-mem-traffic.cfg --logging /var/log/mrtg/mrtg.log >/dev/null 2>&1" >> mycron.tmp
+# every half an hour, check disk
 echo "*/30 * * * * env LANG=C mrtg /etc/mrtg/disk.cfg --logging /var/log/mrtg/mrtg.log >/dev/null 2>&1" >> mycron.tmp
+# every hour, check temperature
 echo "1 * * * * env LANG=C mrtg /etc/mrtg/temp.cfg --logging /var/log/mrtg/mrtg.log >/dev/null 2>&1" >> mycron.tmp
-
-#install new cron file
+# install the new updated cron file
 crontab mycron.tmp
 rm mycron.tmp
