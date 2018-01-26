@@ -35,7 +35,7 @@ env LANG=C /usr/bin/mrtg
 mkdir -p /var/mrtg
 
 env LANG=C /usr/bin/indexmaker --output=/var/mrtg/index.html \
---title="idunn usage" \
+--title="pi usage" \
 --sort=name \
 --enumerate \
 /etc/mrtg/mrtg.cfg \
@@ -43,7 +43,7 @@ env LANG=C /usr/bin/indexmaker --output=/var/mrtg/index.html \
 /etc/mrtg/mem.cfg \
 /etc/mrtg/traffic.cfg \
 /etc/mrtg/disk.cfg \
-/etc/mrtg/temp.cfg \
+/etc/mrtg/temp.cfg
 
 # add to cron
 # using this technique: https://stackoverflow.com/questions/878600/
