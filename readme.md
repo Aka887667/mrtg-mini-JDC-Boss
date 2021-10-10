@@ -10,6 +10,8 @@ git clone https://github.com/Aka887667/mrtg-rpi-mini-4b.git
 
 cd mrtg-rpi-mini-4b ; sh install.sh
 
+打开浏览器访问http://ip/mrtg/  应该就能看到数据
+
 二、Changelog
 
 2021-10-10
