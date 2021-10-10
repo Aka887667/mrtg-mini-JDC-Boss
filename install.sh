@@ -23,10 +23,10 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # install those config files
 mkdir -p /etc/mrtg
 mkdir -p /var/log/mrtg/
-cp $DIR/cpu.cfg /etc/mrtg/
-cp $DIR/mrtg.cpu.sh /etc/mrtg/
+cp $DIR/*.cfg /etc/mrtg/
+cp $DIR/*.sh /etc/mrtg/
 env LANG=C mrtg /etc/mrtg/cpu.cfg
-#  env LANG=C mrtg /etc/mrtg/cpu-mem-traffic.cfg --logging /var/log/mrtg/mrtg.log
+env LANG=C mrtg /etc/mrtg/cpu-mem-traffic.cfg --logging /var/log/mrtg/mrtg.log
 
 env LANG=C /usr/bin/mrtg
 
