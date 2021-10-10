@@ -1,6 +1,7 @@
 
 Thanks for gasp's work.I'll fix it for Raspberry PI 4 and Debian 10 buster.
-有点小bug，我移植到PI 4,Debian 10 buster里。
+
+有点小bug，我移植到PI 4,Debian 10 buster里。头爷我来了，宝。
 
 
 
