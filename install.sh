@@ -4,27 +4,11 @@
 # reading it before executing it
 # is a good idea
 
-# make sure that it is running as root
-if [[ $EUID -ne 0 ]]; then
-   echo 'This script must be run as root';
-   exit 1
-fi
-
-# make sure that mrtg has been installed
-if [[ ! -f /usr/bin/mrtg ]] ; then
-    echo 'mrtg binary "/usr/bin/mrtg" does not exist, aborting.';
-    echo 'please make sure that you have correctly installed mrtg by typing';
-    echo 'apt-get install mrtg';
-    exit 1
-fi
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 # install those config files
 mkdir -p /etc/mrtg
 mkdir -p /var/log/mrtg/
-cp $DIR/*.cfg /etc/mrtg/
-cp $DIR/*.sh /etc/mrtg/
+cp ./*.cfg /etc/mrtg/
+cp ./*.sh /etc/mrtg/
 env LANG=C mrtg /etc/mrtg/cpu.cfg
 env LANG=C mrtg /etc/mrtg/cpu-mem-traffic.cfg --logging /var/log/mrtg/mrtg.log
 
