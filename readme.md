@@ -17,7 +17,7 @@ Thanks for gasp's work.I've fixed it for Raspberry PI 4+ and Debian 10 buster.
 二、TODO
 
 1、温度那里有个什么weather，去掉？
-
+2、要支持4个CPU的，目前是2个。
 
 
 # mrtg-rpi-min
