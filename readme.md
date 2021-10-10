@@ -1,3 +1,8 @@
+
+Thanks for gasp's work.I'll fix it for Raspberry PI 4 and Debian 10 buster.
+
+
+
 # mrtg-rpi-min
 a minimal dependence-free mrtg installation for raspberry pi
 
