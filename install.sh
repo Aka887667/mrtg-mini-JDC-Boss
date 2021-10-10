@@ -32,9 +32,9 @@ env LANG=C /usr/bin/mrtg
 
 
 # generate index in destination folder
-mkdir -p /var/mrtg
+mkdir -p /var/www/html/mrtg
 
-env LANG=C /usr/bin/indexmaker --output=/var/mrtg/index.html \
+env LANG=C /usr/bin/indexmaker --output=/var/www/html/mrtg/index.html \
 --title="pi usage" \
 --sort=name \
 --enumerate \
@@ -42,7 +42,6 @@ env LANG=C /usr/bin/indexmaker --output=/var/mrtg/index.html \
 /etc/mrtg/cpu.cfg \
 /etc/mrtg/mem.cfg \
 /etc/mrtg/traffic.cfg \
-/etc/mrtg/disk.cfg \
 /etc/mrtg/temp.cfg
 
 # add to cron
@@ -55,12 +54,10 @@ if grep -q mrtg mycron.tmp; then
   exit 1
 fi
 
-# every 5 minutes, check cpu, memory and traffic
-echo "*/5 * * * * env LANG=C mrtg /etc/mrtg/cpu-mem-traffic.cfg --logging /var/log/mrtg/mrtg.log >/dev/null 2>&1" >> mycron.tmp
-# every half an hour, check disk
-echo "*/30 * * * * env LANG=C mrtg /etc/mrtg/disk.cfg --logging /var/log/mrtg/mrtg.log >/dev/null 2>&1" >> mycron.tmp
-# every hour, check temperature
-echo "1 * * * * env LANG=C mrtg /etc/mrtg/temp.cfg --logging /var/log/mrtg/mrtg.log >/dev/null 2>&1" >> mycron.tmp
+# every minutes, check cpu, memory and traffic
+echo "* * * * * env LANG=C mrtg /etc/mrtg/cpu-mem-traffic.cfg --logging /var/log/mrtg/mrtg.log >/dev/null 2>&1" >> mycron.tmp
+echo "* * * * * env LANG=C mrtg /etc/mrtg/temp.cfg --logging /var/log/mrtg/mrtg.log >/dev/null 2>&1" >> mycron.tmp
+
 # install the new updated cron file
 crontab mycron.tmp
 rm mycron.tmp
