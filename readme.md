@@ -2,7 +2,15 @@
 Thanks for gasp's work.I've fixed it for Raspberry PI 4+ and Debian 10 buster.
 把这个脚本移植到RPI 4B里
 
-一、Changelog
+一、安装使用
+
+apt install mrtg micro-httpd
+
+git clone https://github.com/Aka887667/mrtg-rpi-mini-4b.git
+
+cd mrtg-rpi-mini-4b ; sh install.sh
+
+二、Changelog
 
 2021-10-10
 
@@ -14,10 +22,11 @@ Thanks for gasp's work.I've fixed it for Raspberry PI 4+ and Debian 10 buster.
 
 4、修复网络流量统计的BUG，看后面能否用eth*代替eth0，这样也可以统计eth1的流量了。
 
-二、TODO
+三、TODO
 
 1、温度那里有个什么weather，去掉？
-2、要支持4个CPU的，目前是2个。
+
+2、要支持4个CPU的，目前是2个。CPU的统计要修复。
 
 
 # mrtg-rpi-min
