@@ -3,7 +3,7 @@ Thanks for gasp's work.I've fixed it for Raspberry PI 4+ and Debian 10 buster.
 
 有点小bug，我移植到PI 4,Debian 10 buster里。头爷我来了，宝。
 
-Changelog
+一、Changelog
 
 2021-10-10
 
@@ -14,6 +14,10 @@ Changelog
 3、最大内存改为了3930860
 
 4、修复网络流量统计的BUG，看后面能否用eth*代替eth0，这样也可以统计eth1的流量了。
+
+二、TODO
+
+1、温度那里有个什么weather，去掉？
 
 # mrtg-rpi-min
 a minimal dependence-free mrtg installation for raspberry pi
