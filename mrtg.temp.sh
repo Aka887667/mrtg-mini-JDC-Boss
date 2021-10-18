@@ -4,7 +4,7 @@
 
 # inside temperature
 # there is an utility tool for that
-# tm=`/opt/vc/bin/vcgencmd measure_temp`
+tm=`/opt/vc/bin/vcgencmd measure_temp`
 # tc=`echo $tm| cut -d '=' -f2 | sed 's/..$//'`
 # but the simpler way is to read it directly from system
 tc=`awk '{printf("%.1f\n",$1/1e3)}' /sys/class/thermal/thermal_zone0/temp`
@@ -21,6 +21,7 @@ tc=`awk '{printf("%.1f\n",$1/1e3)}' /sys/class/thermal/thermal_zone0/temp`
 to=0
 
 echo $tc
-echo $to
+echo $tc
+echo $tc
 echo 0
 echo 'temperature'
