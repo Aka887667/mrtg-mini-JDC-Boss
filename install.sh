@@ -23,8 +23,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # install those config files
 mkdir -p /etc/mrtg
 mkdir -p /var/log/mrtg/
-cp $DIR/cpu.cfg /etc/mrtg/
-cp $DIR/mrtg.cpu.sh /etc/mrtg/
+cp $DIR/mrtg.cfg /etc/mrtg/
+cp $DIR/{cpu,disk,mem,temp,traffic}.cfg /etc/mrtg/
+cp $DIR/mrtg.{cpu,disk,mem,temp,traffic}.sh /etc/mrtg/
 env LANG=C mrtg /etc/mrtg/cpu.cfg
 #  env LANG=C mrtg /etc/mrtg/cpu-mem-traffic.cfg --logging /var/log/mrtg/mrtg.log
 
@@ -56,7 +57,7 @@ if grep -q mrtg mycron.tmp; then
 fi
 
 # every 5 minutes, check cpu, memory and traffic
-echo "*/5 * * * * env LANG=C mrtg /etc/mrtg/cpu-mem-traffic.cfg --logging /var/log/mrtg/mrtg.log >/dev/null 2>&1" >> mycron.tmp
+echo "*/5 * * * * env LANG=C mrtg /etc/mrtg/{cpu,mem,traffic}.cfg --logging /var/log/mrtg/mrtg.log >/dev/null 2>&1" >> mycron.tmp
 # every half an hour, check disk
 echo "*/30 * * * * env LANG=C mrtg /etc/mrtg/disk.cfg --logging /var/log/mrtg/mrtg.log >/dev/null 2>&1" >> mycron.tmp
 # every hour, check temperature
