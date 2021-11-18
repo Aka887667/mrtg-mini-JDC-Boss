@@ -1,5 +1,5 @@
 #!/bin/sh
 # this generate two lines
-top -bn2 | grep "Cpu(s)" | awk -F'id,' '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s\n", 100 - v }'
+top -bn2 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}';
 echo 0
 echo 0
